@@ -1,0 +1,44 @@
+
+# v0.1
+metastack:
+- global_config:
+  - syslog_server: <ip_addr>
+- images:
+  - <image_id>: { name: <image_name>, url: <image_url> }
+  - ...
+- vm_flavours:
+  - <flavour_id>: { name: <flavour_name>, vcpus: <num_vcpus>, ram: <mem MB> }
+  ...
+- desired_vms:
+  - <vm_id>: { name: <vm_name>, flavour: <flavour_id>, image: <image_id>, state: <stop, start>, [, host: <host_id>] }
+  ...
+- actual_vms:
+  - <vm_id>: { host: <host>, state: <stop, start> }
+  ...
+- hosts:
+  - <host_id>: { name: <name>, total_ram: <mem MB>, used_ram: <mem MB>, total_vcpu: <num>, used_vcpu: <num> }
+  ...
+
+
+POSSIBLE ENHANCEMENTS...
+
+- vm_resources:
+  - <vm_id>: { volume_id: <id>, network_port_id: <id> }
+
+- network_ports:
+  - <port_id>: { name: <name>, ip_addr: <addr>, mac_addr: <addr>, security_groups: [group_id, ...] }
+
+- security_groups:
+  - <group_id>: {...}
+
+- networks:
+  - <network_id>: { name: <name>, ip_addrs: [...] }
+  ...
+
+  internal/external networks
+
+
+Notes
+=====
+Currently no configuration of VM network interfaces.  Assuming single interface with whatever method we
+need to "make it work"...
